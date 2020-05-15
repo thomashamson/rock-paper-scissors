@@ -6,6 +6,11 @@ const computerChoice = document.getElementById('computer-choice')
 const randomNumber = Math.round(Math.random() * (3))
 const userChoice = document.getElementById('user-choice')
 const possibleChoices = document.querySelectorAll('.choices')
+const reset = document.getElementById('reset')
+
+reset.addEventListener('click', (e) => {
+  resetResults()
+})
 
 // Get userChosen
 possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
@@ -45,4 +50,11 @@ function results() {
   } else if (computerChosen === 'scissors' && userChosen === 'paper') {
     return result = 'you lost'
   }
+}
+
+// Reset results
+function resetResults() {
+  userChoice.innerHTML = ''
+  computerChoice.innerHTML = ''
+  displayResult.innerHTML = ''
 }
