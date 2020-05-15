@@ -6,9 +6,9 @@ const computerChoice = document.getElementById('computer-choice')
 const randomNumber = Math.round(Math.random() * (3))
 const userChoice = document.getElementById('user-choice')
 const possibleChoices = document.querySelectorAll('.choices')
-const reset = document.getElementById('reset')
+const resetResults = document.getElementById('reset-results')
 
-reset.addEventListener('click', (e) => {
+resetResults.addEventListener('click', (e) => {
   resetResults()
 })
 
