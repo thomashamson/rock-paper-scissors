@@ -7,10 +7,15 @@ const randomNumber = Math.round(Math.random() * (3))
 const userChoice = document.getElementById('user-choice')
 const possibleChoices = document.querySelectorAll('.choices')
 const reset = document.getElementById('reset')
+const resetGame = document.getElementById('reset-game')
 var won = document.getElementById('won')
 var lost = document.getElementById('lost')
 var wonCounter = isNaN(parseInt(won)) ? 0 : parseInt(won)
 var lostCounter = isNaN(parseInt(lost)) ? 0 : parseInt(lost)
+
+resetGame.addEventListener('click', (e) => {
+  resetGameData()
+})
 
 reset.addEventListener('click', (e) => {
   resetResults()
@@ -73,4 +78,13 @@ function updateScore(result) {
     lostCounter++
     lost.innerHTML = lostCounter.toString()
   }
+}
+
+// Reset results
+function resetGameData() {
+  wonCounter = 0
+  won.innerHTML = wonCounter.toString()
+  lostCounter = 0
+  lost.innerHTML = lostCounter.toString()
+  resetResults()
 }
