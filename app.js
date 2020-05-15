@@ -6,9 +6,13 @@ const computerChoice = document.getElementById('computer-choice')
 const randomNumber = Math.round(Math.random() * (3))
 const userChoice = document.getElementById('user-choice')
 const possibleChoices = document.querySelectorAll('.choices')
-const resetResults = document.getElementById('reset-results')
+const reset = document.getElementById('reset')
+var won = document.getElementById('won')
+var lost = document.getElementById('lost')
+var wonCounter = isNaN(parseInt(won)) ? 0 : parseInt(won)
+var lostCounter = isNaN(parseInt(lost)) ? 0 : parseInt(lost)
 
-resetResults.addEventListener('click', (e) => {
+reset.addEventListener('click', (e) => {
   resetResults()
 })
 
@@ -17,6 +21,7 @@ possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click
   userChosen = e.target.id
   generatedComputerChoice()
   results()
+  updateScore(result)
   userChoice.innerHTML = userChosen
   computerChoice.innerHTML = computerChosen
   displayResult.innerHTML = result
@@ -57,4 +62,15 @@ function resetResults() {
   userChoice.innerHTML = ''
   computerChoice.innerHTML = ''
   displayResult.innerHTML = ''
+}
+
+// Update score
+function updateScore(result) {
+  if (result === 'you win') {
+    wonCounter++
+    won.innerHTML = wonCounter.toString()
+  } else if (result === 'you lost') {
+    lostCounter++
+    lost.innerHTML = lostCounter.toString()
+  }
 }
